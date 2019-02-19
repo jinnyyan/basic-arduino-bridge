@@ -4,8 +4,8 @@
 Servo myservo;  // create servo object to control a servo
 
 int pos = 0;    // variable to store the servo position
-byte moving = '0'; // variable to store whether servo is moving
-byte opened = '0'; // variable to store whether bridge is open
+byte moving = (byte) 0; // variable to store whether servo is moving
+byte opened = (byte) 0; // variable to store whether bridge is open
 const int n = 2; // size of buffer
 byte buffer[2];
 
@@ -22,7 +22,7 @@ void setup() {
 void loop() {
   int status = digitalRead(4); // status of button
   if (status == 0) { // when button is pressed down
-    moving = '1';
+    moving = (byte) 1;
     movePosition();
   } else if (status == 1) { // when button is released
     moving = false;
@@ -30,25 +30,25 @@ void loop() {
 }
 
 void movePosition() {
+//  buffer[0] = moving;
+//  buffer[1] = opened;
+//  ELECHOUSE_cc1101.SendData(buffer, 1);
+  ELECHOUSE_cc1101.SendData(moving, 1);
   if (pos == 0){          // Bridge is closed, heading towards open
     while(pos < 90){
       pos++;
       myservo.write(pos);
       delay(15);
     }
-    opened = '1';
+    opened = (byte) 1;
   } else if (pos == 90) { // Bridge is open, heading towards closed
      while (pos > 0){
       pos--;
       myservo.write(pos);
       delay(15);
     }
-    opened = '0';
+    opened = (byte) 0;
   }
-  buffer[0] = moving;
-  buffer[1] = opened;
-//  ELECHOUSE_cc1101.SendData(buffer, 1);
-  ELECHOUSE_cc1101.SendData(moving, 1); 
 }
 
 void initiatePosition() {
