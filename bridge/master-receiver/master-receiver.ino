@@ -6,7 +6,7 @@ Servo myservo; // create servo object to control a servo
 int pos = 0; // variable to store the servo position
 byte moving = '0'; // variable to store whether servo is moving
 byte opened = '0'; // variable to store whether bridge is open (this reflects master)
-const int n = 61; // size of buffer
+const int n = 2; // size of buffer
 byte  buffer[2] = {0,0};
 
 void setup(){
