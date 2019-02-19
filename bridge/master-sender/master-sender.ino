@@ -13,7 +13,7 @@ void setup() {
   Serial.begin(9600); // begins for writing to serial monitor
   Serial.println("Transponder initiating");
   
-  ELECHOUSE_cc1101.Init(F_868); // set frequency - F_433, F_868, F_965 MHz
+  ELECHOUSE_cc1101.Init(F_433); // set frequency - F_433, F_868, F_965 MHz
   pinMode(4, INPUT);  // attaches the button on pin 4
   myservo.attach(9);  // attaches the servo on pin 9 to the servo object
   initiatePosition(); // upon initiating, bridge should be closed at the 0 position

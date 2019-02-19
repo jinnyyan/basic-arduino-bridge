@@ -14,7 +14,7 @@ void setup(){
   Serial.begin(9600); // begins for writing to serial monitor
   Serial.println("Responder Initating");
 
-  ELECHOUSE_cc1101.Init(F_868);  // set frequency - F_433, F_868, F_965 MHz
+  ELECHOUSE_cc1101.Init(F_433);  // set frequency - F_433, F_868, F_965 MHz
   ELECHOUSE_cc1101.SetReceive();
   myservo.attach(9); // attaches the servo on pin 9 of the servo object
   initiatePosition(); // upon initiating, bridge should be closed at the 0 position
@@ -31,9 +31,9 @@ void loop()
 //    Serial.println(opened);
     if (moving == (int) 0){ // TODO: Check value of what moving char is
       movePosition();
-      ELECHOUSE_cc1101.SetReceive();
     }
   }
+  ELECHOUSE_cc1101.SetReceive();
 }
 
 void movePosition() {
