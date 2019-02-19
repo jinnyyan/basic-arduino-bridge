@@ -7,7 +7,8 @@ int pos = 0; // variable to store the servo position
 byte moving = '0'; // variable to store whether servo is moving
 byte opened = '0'; // variable to store whether bridge is open (this reflects master)
 const int n = 2; // size of buffer
-byte  buffer[2] = {0,0};
+//byte  buffer[2] = {0,0};
+byte  buffer[1] = {0};
 
 void setup(){
   Serial.begin(9600); // begins for writing to serial monitor
@@ -25,9 +26,9 @@ void loop()
   {
     int len = ELECHOUSE_cc1101.ReceiveData(buffer);
     moving = buffer[0];
-    opened = buffer[1];
+//    opened = buffer[1];
     Serial.println(moving);
-    Serial.println(opened);
+//    Serial.println(opened);
     if (moving == '1'){ // TODO: Check value of what moving char is
       movePosition();
       ELECHOUSE_cc1101.SetReceive();

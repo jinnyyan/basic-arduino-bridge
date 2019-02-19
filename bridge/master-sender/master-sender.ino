@@ -47,8 +47,8 @@ void movePosition() {
   }
   buffer[0] = moving;
   buffer[1] = opened;
-  ELECHOUSE_cc1101.SendData(buffer, 1);
-  //ELECHOUSE_cc1101.SendData(opened, 1); 
+//  ELECHOUSE_cc1101.SendData(buffer, 1);
+  ELECHOUSE_cc1101.SendData(moving, 1); 
 }
 
 void initiatePosition() {
