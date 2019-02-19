@@ -31,7 +31,7 @@ void loop() {
 
 void movePosition() {
   ELECHOUSE_cc1101.SendData(moving, n);
-  ELECHOUSE_cc1101.Init();
+  //ELECHOUSE_cc1101.Init();
   if (pos == 0){          // Bridge is closed, heading towards open
     while(pos < 90){
       pos++;
