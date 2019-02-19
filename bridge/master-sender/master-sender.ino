@@ -50,7 +50,6 @@ void movePosition() {
     }
     opened = (byte) 0;
   }
-  loop();
 }
 
 void initiatePosition() {

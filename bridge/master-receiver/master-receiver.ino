@@ -29,7 +29,7 @@ void loop()
 //    opened = buffer[1];
     Serial.println(moving);
 //    Serial.println(opened);
-    if (moving == '0'){ // TODO: Check value of what moving char is
+    if (moving == (int) 0){ // TODO: Check value of what moving char is
       movePosition();
       ELECHOUSE_cc1101.SetReceive();
     }
@@ -37,13 +37,14 @@ void loop()
 }
 
 void movePosition() {
-  if (pos == 0 && opened == '1') {         // Bridge is closed, heading towards open
+  Serial.println("Moving");
+  if (pos == 0) {         // Bridge is closed, heading towards open
     while (pos < 90) {
       pos++;
       myservo.write(pos);
       delay(15);
     }
-  } else if (pos == 90 && opened == '0') { // Bridge is open, heading towards closed
+  } else if (pos == 90) { // Bridge is open, heading towards closed
     while (pos > 0) {
       pos--;
       myservo.write(pos);
