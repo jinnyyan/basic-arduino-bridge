@@ -23,8 +23,6 @@ void loop() {
   if (status == 0) { // when button is pressed down
     moving = '1';
     movePosition();
-    ELECHOUSE_cc1101.SendData(moving, '1');
-    ELECHOUSE_cc1101.SendData(opened, '1');
   } else if (status == 1) { // when button is released
     moving = false;
   }
@@ -45,7 +43,9 @@ void movePosition() {
       delay(15);
     }
     opened = '0';
-  } 
+  }
+  ELECHOUSE_cc1101.SendData(moving, 1);
+  ELECHOUSE_cc1101.SendData(opened, 1); 
 }
 
 void initiatePosition() {
