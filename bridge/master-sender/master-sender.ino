@@ -6,7 +6,8 @@ Servo myservo;  // create servo object to control a servo
 int pos = 0;    // variable to store the servo position
 byte moving = '0'; // variable to store whether servo is moving
 byte opened = '0'; // variable to store whether bridge is open
-const int n = 61; // size of buffer
+const int n = 2; // size of buffer
+byte buffer[2];
 
 void setup() {
   Serial.begin(9600); // begins for writing to serial monitor
@@ -44,7 +45,8 @@ void movePosition() {
     }
     opened = '0';
   }
-  buffer[2] = {moving, opened}
+  buffer[0] = moving;
+  buffer[1] = opened;
   ELECHOUSE_cc1101.SendData(buffer, 2);
   //ELECHOUSE_cc1101.SendData(opened, 1); 
 }
