@@ -6,6 +6,7 @@ Servo myservo;  // create servo object to control a servo
 int pos = 0;    // variable to store the servo position
 byte moving = (byte) 0; // variable to store whether servo is moving
 byte opened = (byte) 0; // variable to store whether bridge is open
+const int n = 1;
 
 void setup() {
   Serial.begin(9600); // begins for writing to serial monitor
