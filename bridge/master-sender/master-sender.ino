@@ -22,6 +22,7 @@ void setup() {
 void loop() {
   int status = digitalRead(4); // status of button
   if (status == 0) { // when button is pressed down
+    Serial.println("Button pressed");
     moving = (byte) 1;
     movePosition();
   } else if (status == 1) { // when button is released
